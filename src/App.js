@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import EventForm from './components/EventForm'
 
 
 const App = () => {
 
-  const handleSignIn = values => {
+  const handleSubmit = values => {
     console.log(values);
     fetch('http://localhost:4000/events', {
       method: 'POST',
@@ -19,10 +17,13 @@ const App = () => {
            firstName: values.firstName,
            lastName: values.lastName,
            email: values.email,
-           eventDate: new Date('2023-03-02')
+           eventDate: values.eventDate
          }),
     }).then(res => res.json())
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err))
   };
 
   return (
@@ -31,7 +32,7 @@ const App = () => {
         <p className="App-intro">
           Contact Form
         </p>
-        <EventForm onSubmit={handleSignIn} />
+        <EventForm onSubmit={handleSubmit} />
       </div>
     </div>
   );

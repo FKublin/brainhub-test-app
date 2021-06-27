@@ -1,7 +1,9 @@
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, destroy } from 'redux-form';
 import renderField from './RenderField';
+import renderDatePicker from './DatePicker'
 
 let EventForm = props => {
+
     const { handleSubmit } = props;
     return <form onSubmit={handleSubmit} className="form">
       <div className="field">
@@ -21,6 +23,13 @@ let EventForm = props => {
           <Field name="email" component={renderField} type="email" label="Email Address"/>
         </div>
       </div>
+
+      <div className="field">
+        <div className="control">
+          <label className="field">Event date</label>
+            <Field name="eventDate" showTime={false} component={renderDatePicker} />
+        </div>
+      </div>
   
       <div className="field">
         <div className="control">
@@ -30,6 +39,7 @@ let EventForm = props => {
   
     </form>;
   };
+
   
   const validate = val => {
     const errors = {};
@@ -53,7 +63,7 @@ let EventForm = props => {
   };
   
   EventForm = reduxForm({
-    form: 'signIn',
+    form: 'eventForm',
     validate,
   })(EventForm);
 
