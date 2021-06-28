@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import EventForm from './components/EventForm'
+import EventForm from './components/EventContainer'
 
 
 const App = () => {
