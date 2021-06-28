@@ -52,11 +52,14 @@ let EventForm = props => {
       errors.lastName = 'Required';
     }
     if (!val.email) {
-      console.log('email is required');
+      console.log('Email is required');
       errors.email = 'Required';
     } else if (!/^.+@.+$/i.test(val.email)) {
       console.log('email is invalid');
       errors.email = 'Invalid email address';
+    }
+    if (!val.eventDate) {
+      errors.eventDate = 'Event date is required'
     }
 
     return errors;
