@@ -6,7 +6,7 @@ import renderDatePicker from './utils/DatePicker'
 let EventForm = props => {
 
     const [isSuccess, setSuccess] = useState(false)
-    const [errors, setErrors] =  useState([])
+    const [errors, setErrors] =  useState()
   
     const handleSubmit = values => {
       console.log(values);
@@ -22,10 +22,15 @@ let EventForm = props => {
              email: values.email,
              eventDate: values.eventDate
            }),
-      }).then(res => res.json())
+      }).then(res => {
+        if(res.status === 200)
+          setSuccess(true)
+
+        return res.json()
+      })
       .then(res => {
         console.log(res)
-        setSuccess(true)
+
       })
       .catch(err => {
         setErrors(err)
@@ -77,9 +82,9 @@ let EventForm = props => {
           </div>
         }
 
-        {errors.length > 0 &&
+        {errors &&
           <div className="notification is-danger">
-          <button className="delete" onClick={() => {setErrors([])}} ></button>
+          <button className="delete" onClick={() => {setErrors()}} ></button>
             An error occured. Please try again.
         </div>
         }
