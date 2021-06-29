@@ -20,7 +20,7 @@ import EventComponent from './EventComponent'
       errors.email = 'Invalid email address';
     }
     if (!val.eventDate) {
-      errors.eventDate = 'Event date is required'
+      errors.eventDate = 'Required'
     }
 
     return errors;

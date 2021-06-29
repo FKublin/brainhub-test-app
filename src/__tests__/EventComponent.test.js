@@ -27,13 +27,6 @@ describe('<EventForm /> ', () => {
       onSaveResponse = Promise.resolve()
       handleSubmit = fn => fn
 
-        // store = mockStore({
-        //   firstName: 'John',
-        //   lastName: 'Doe',
-        //   email: 'johndoe@mail.com',
-        //   eventDate: new Date('2023-03-02')
-        // });
-
         const props = {
           
           
